@@ -7,10 +7,11 @@
   }
   
   .StatusBarBox {
-    border: 2px solid var(--primary-color);
+    border: 4px double var(--primary-color);
     display: flex;
-    justify-content: space-between;
     padding: 1px;
+    border-radius: 10px;
+    justify-content: space-between;
   }
 
 .StatusBarItem {

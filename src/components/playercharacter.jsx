@@ -16,13 +16,14 @@ const PlayerDefence = 0;
 
   return (
 <div className="StatusBarBox">
-    <div id='CharacterStats' style={{display: 'flex' }}>
+    <div id='CharacterStats' style={{display: 'flex'}}>
         <div className="StatusBarItem" title="Health"> <FaHeart className="InventoryIcon" />: {PlayerHealth} </div>
-        <div className="StatusBarItem" title="Gold"> <FaCoins className="InventoryIcon" />: {PlayerGold} </div>
         <div className="StatusBarItem" title="Attack"> <GiBroadsword className="InventoryIcon" />: {PlayerAttack} </div>
         <div className="StatusBarItem" title="Defence"> <GiShield className="InventoryIcon" />: {PlayerDefence} </div>
     </div> 
-    <div id='RightItems' style={{display: 'flex' }}>
+
+    <div id='RightItems' style={{display: 'flex'}}> 
+        <div className="StatusBarItem" title="Gold"> <FaCoins className="InventoryIcon" />: {PlayerGold} </div>
         <div className="StatusBarItem" title="Inventory"> <BsBackpack4Fill  className="InventoryIcon" /> </div>
         <div className="StatusBarItem" title="Map"> <RiTreasureMapLine className="InventoryIcon" /> </div>
     </div>
