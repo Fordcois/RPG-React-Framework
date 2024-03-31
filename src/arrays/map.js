@@ -10,11 +10,14 @@ const Cave = new Location('Cave', 'You enter a dark cave, the walls adorned with
 
 // Initialize a 2D array with locations
 const worldMap = [
-  [Meadows, Meadows, Meadows, Meadows, Meadows],
+  [Meadows, Meadows, Meadows, Meadows, Castle],
   [Beach, Forest, Castle, Forest, Cave],
   [Mountains, Meadows, Meadows, Meadows, Meadows],
   [Cave, Beach, Forest, Castle, Meadows],
-  [Meadows, Meadows, Meadows, Meadows, Mountains]
+  [Beach, Beach, Beach, Beach, Beach]
 ];
+
+// Reverses the map so the display above matches North/South/East/West Display
+worldMap.reverse();
 
 export default worldMap;
