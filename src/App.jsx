@@ -3,10 +3,28 @@ import PlayerCharacter from "./components/playercharacter.jsx";
 import Compass from "./components/compass.jsx";
 import worldMap from './arrays/map.js';
 
+
 function App() {
-
   const [currentLocationCoord, setCurrentLocationCoord] = useState([0, 0]);
+  const currentLocation = worldMap[currentLocationCoord[0]][currentLocationCoord[1]];
 
+  var validdirections = ['north','east','south','west']
+
+// Remove impossible Directions
+  //  remove from location
+        // TODO add limitedDirections to Location Class then iterate through them here
+  //  Remove North
+      if (currentLocationCoord[0] >= 4){validdirections = validdirections.filter(direction => direction !== 'north');}
+  //  Remove East
+      if (currentLocationCoord[1] >= worldMap[currentLocationCoord[1]].length - 1 ){validdirections = validdirections.filter(direction => direction !== 'east');}
+  //  Remove South
+      if (currentLocationCoord[0] <= 0){validdirections = validdirections.filter(direction => direction !== 'south');}
+  //  Remove West
+      if (currentLocationCoord[1] <= 0){validdirections = validdirections.filter(direction => direction !== 'west');}
+
+
+
+//  Move Function
   const move = (direction) => {
     console.log(`Moving ${direction}`);
     switch (direction) {
@@ -30,16 +48,16 @@ function App() {
   return (
     <div>
       <PlayerCharacter />
-      <Compass move={move}/>
+      <Compass validdirections={validdirections} move={move}/>
       <b>Current Location: </b><br/>
       X:{currentLocationCoord[1]} Y:{currentLocationCoord[0]}<br/>
-      
+      <b>Valid Locations:</b><br/>
+      {validdirections.toString()}<br/>
       <b>Location Name:</b> <br/>
-      {worldMap[currentLocationCoord[0]][currentLocationCoord[1]].name}<br/>
+      {currentLocation.name}<br/>
       <b>Location Description:</b> <br/>
-      {worldMap[currentLocationCoord[0]][currentLocationCoord[1]].description}
+      {currentLocation.description}
 
-      
     </div>
   );
 }
