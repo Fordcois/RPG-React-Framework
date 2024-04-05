@@ -11,16 +11,14 @@ function App() {
   var validdirections = ['north','east','south','west']
 
 // Remove impossible Directions
-  //  remove from location
-        // TODO add limitedDirections to Location Class then iterate through them here
   //  Remove North
-      if (currentLocationCoord[0] >= 4){validdirections = validdirections.filter(direction => direction !== 'north');}
+      if (currentLocationCoord[0] >= 4 || !currentLocation.exits.includes('north')){validdirections = validdirections.filter(direction => direction !== 'north');}
   //  Remove East
-      if (currentLocationCoord[1] >= worldMap[currentLocationCoord[1]].length - 1 ){validdirections = validdirections.filter(direction => direction !== 'east');}
+      if (currentLocationCoord[1] >= worldMap[currentLocationCoord[1]].length - 1 || !currentLocation.exits.includes('east')){validdirections = validdirections.filter(direction => direction !== 'east');}
   //  Remove South
-      if (currentLocationCoord[0] <= 0){validdirections = validdirections.filter(direction => direction !== 'south');}
+      if (currentLocationCoord[0] <= 0 || !currentLocation.exits.includes('south')){validdirections = validdirections.filter(direction => direction !== 'south');}
   //  Remove West
-      if (currentLocationCoord[1] <= 0){validdirections = validdirections.filter(direction => direction !== 'west');}
+      if (currentLocationCoord[1] <= 0 || !currentLocation.exits.includes('west')){validdirections = validdirections.filter(direction => direction !== 'west');}
 
 
 
@@ -56,7 +54,9 @@ function App() {
       <b>Location Name:</b> <br/>
       {currentLocation.name}<br/>
       <b>Location Description:</b> <br/>
-      {currentLocation.description}
+      {currentLocation.description}<br/>
+      <b>Exits:</b><br/>
+      {currentLocation.exits.toString()}
 
     </div>
   );
