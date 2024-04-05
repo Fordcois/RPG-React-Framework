@@ -1,7 +1,8 @@
 class Location {
-    constructor(name, description) {
+    constructor(name, description,exits) {
         this.name = name;
         this.description = description;
+        this.exits = exits;
     }
 }
 
