@@ -2,11 +2,13 @@ import { useState } from 'react';
 import PlayerCharacter from "./components/playercharacter.jsx";
 import Compass from "./components/compass.jsx";
 import worldMap from './arrays/map.js';
+import Quest from './classes/questClass.js';
 
 
 function App() {
   const [currentLocationCoord, setCurrentLocationCoord] = useState([0, 0]);
   const currentLocation = worldMap[currentLocationCoord[0]][currentLocationCoord[1]];
+  const [ActiveQuest] = useState (new Quest ('Find the Castle','Locate The Castle in the woods','Castle'))
 
   var validdirections = ['north','east','south','west']
 
@@ -19,6 +21,12 @@ function App() {
       if (currentLocationCoord[0] <= 0 || !currentLocation.exits.includes('south')){validdirections = validdirections.filter(direction => direction !== 'south');}
   //  Remove West
       if (currentLocationCoord[1] <= 0 || !currentLocation.exits.includes('west')){validdirections = validdirections.filter(direction => direction !== 'west');}
+
+
+
+
+// Current Quest - Check if complete
+ActiveQuest.checkQuestComplete(currentLocation)
 
 
 
@@ -49,14 +57,18 @@ function App() {
       <Compass validdirections={validdirections} move={move}/>
       <b>Current Location: </b><br/>
       X:{currentLocationCoord[1]} Y:{currentLocationCoord[0]}<br/>
-      <b>Valid Locations:</b><br/>
-      {validdirections.toString()}<br/>
       <b>Location Name:</b> <br/>
       {currentLocation.name}<br/>
       <b>Location Description:</b> <br/>
       {currentLocation.description}<br/>
-      <b>Exits:</b><br/>
-      {currentLocation.exits.toString()}
+
+      <b>Quest Information</b><br/>
+      <b>Current Quest:</b><br/>
+      {ActiveQuest.description}<br/>
+      <b>Quest Complete:</b><br/>
+      {ActiveQuest.completed.toString()}<br/>
+
+
 
     </div>
   );

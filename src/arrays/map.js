@@ -14,9 +14,9 @@ const TightCorridor = new Location ('A Tight Squeeze','There is a small gap betw
 // Initialize a 2D array with locations
 const worldMap = [
   [Forest, Meadows, Meadows, Meadows, Castle],
-  [Beach, Forest, Castle, Forest, Cave],
+  [Beach, Forest, Meadows, Forest, Cave],
   [Mountains, Meadows, Meadows, Meadows, Meadows],
-  [NoNorth, Beach, TightCorridor, Castle, Meadows],
+  [NoNorth, Beach, TightCorridor, TightCorridor, Meadows],
   [Beach, Beach, Beach, Beach, Beach]
 ];
 
