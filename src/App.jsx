@@ -8,7 +8,7 @@ import Quest from './classes/questClass.js';
 function App() {
   const [currentLocationCoord, setCurrentLocationCoord] = useState([0, 0]);
   const currentLocation = worldMap[currentLocationCoord[0]][currentLocationCoord[1]];
-  const [ActiveQuest] = useState (new Quest ('Find the Castle','Locate The Castle in the woods','Castle'))
+  const [ActiveQuest] = useState (new Quest ('Find the Castle','Locate The Castle in the woods','Location','Castle'))
 
   var validdirections = ['north','east','south','west']
 
